@@ -7,4 +7,4 @@ Please see the project instructions in Coursera for the details.
 
 I assume that you've downloaded the [data](https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip) and unzipped it to a subdirectory of your working directory __./data__.
 
-Download and run my scripts {plot1.r, plot2.r, plot3.r, and plot4.r}.  Each will save a plot#.png to the ./data folder.
+Download and run my scripts {plot1.r, plot2.r, plot3.r, and plot4.r}.  Each will save a plot#.png to the ./data folder.  Those files are also here in this repo.
