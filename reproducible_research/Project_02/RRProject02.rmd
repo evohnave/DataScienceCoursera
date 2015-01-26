@@ -1,0 +1,128 @@
+---
+output: html_document
+---
+# Beware Tornadoes: Economic and Human Casualties, 1950-2011
+### Reproducible Research, Project 2
+
+## Synopsis
+
+Tornadoes injured or killed the most people and were the 3rd leading cause of economic damage in the period 1950-2011.
+
+A review of the NOAA Storm Database shows that, over the period of 1950-2011, tornadoes in the United States caused 91346 injuries, 5633 fatalities, and \$56.937 billion in economic property damage.
+
+
+## Questions to be addressed
+1.  Across the United States, which types of events (as indicated in the `EVTYPE` variable) are most harmful with respect to population health?
+
+1.  Across the United States, which types of events have the greatest economic consequences?
+
+## Data Processing
+1.  Read in the data
+```{r}
+StormData <- read.csv(bzfile("C:/Users/Cire/Documents/R/Sandbox/repdata-data-StormData.csv.bz2"))
+```
+1.  Subset the data... we don't need all the columns
+```{r}
+columns <- c("BGN_DATE", "BGN_TIME", "STATE", "EVTYPE", "FATALITIES",
+             "INJURIES", "PROPDMG", "PROPDMGEXP")
+StormData <- StormData[,columns]
+```
+1.  Clean PROPDMGEXP and create a new column with actual damage values
+```{r}
+# Get rid of NA values
+StormData <- subset(StormData, StormData$PROPDMGEXP!='+' & 
+                    StormData$PROPDMGEXP!='-' &  
+                    StormData$PROPDMGEXP!='?')
+
+StormData$PROPDMGEXP <- toupper(StormData$PROPDMGEXP)
+
+# PROPDMGEXP gives the 'exponent' value of the property damage
+old_vals <- c('0', '1', '2', '3', '4', '5', '6', '7', '8', 'H', 'K', 'M', 'B', 
+              '')
+new_vals <- c(1, 0.1*10^3, 0.2*10^3, 0.3*10^3, 0.4*10^3, 0.5*10^3, 0.6*10^3, 
+              0.7*10^3, 0.8*10^3, 10^2, 10^3, 10^6, 10^9, 1)
+
+for(idx in 1:length(old_vals)){
+  StormData[StormData$PROPDMGEXP == old_vals[idx], ]$PROPDMGEXP <- new_vals[idx]
+  }
+
+# Add in new column with real property damage value
+StormData$Damage <- as.numeric(StormData$PROPDMG) * as.numeric(StormData$PROPDMGEXP)
+```
+1.  Calculate injuries, fatalities, and property damage
+```{r}
+Totals.Injuries <- aggregate(formula = INJURIES ~ EVTYPE,
+                             data = StormData,
+                             FUN = sum)
+# Sort by most injuries
+Totals.Injuries <- Totals.Injuries[order(x = Totals.Injuries$INJURIES, 
+                                         decreasing = TRUE), ]
+# Now for fatalities
+Totals.Fatalities <- aggregate(formula = FATALITIES ~ EVTYPE,
+                             data = StormData,
+                             FUN = sum)
+# Sort by most fatalities
+Totals.Fatalities <- Totals.Fatalities[order(x = Totals.Fatalities$FATALITIES, 
+                                         decreasing = TRUE), ]
+# And now for property damage
+Totals.Damage <- aggregate(formula = Damage ~ EVTYPE, 
+                           data = StormData, 
+                           FUN = sum)
+# Sort by most damage
+Totals.Damage <- Totals.Damage[order(x = Totals.Damage$Damage, 
+                                         decreasing = TRUE), ]
+
+```
+
+## Results
+
+Here's a barplot of the top 5 storm sources of injuries:
+
+```{r}
+barplot(height = Totals.Injuries$INJURIES[1:5],
+        names.arg = Totals.Injuries$EVTYPE[1:5],
+        main = "Top 5 Storm Sources of Injuries",
+        xlab = "Source of Injuries",
+        ylab = "Injuries")
+
+```
+
+As you can see, Tornado is the overwhelming source of injuries over the period with `r Totals.Injuries[1,2]` injuries.
+
+Here is a barplot of the top 5 storm sources of fatalities:
+
+```{r}
+barplot(height = Totals.Fatalities$FATALITIES[1:5],
+        names.arg = Totals.Fatalities$EVTYPE[1:5],
+        main = "Top 5 Storm Sources of Fatalities",
+        xlab = "Source of Fatalities",
+        ylab = "Fatalities")
+
+```
+
+Again, Tornado is the overwhelming source of fatalities over the period with `r Totals.Fatalities[1,2]` fatalities.
+
+And, finally, here is a barplot of the top 5 storm sources of economic damage:
+
+```{r}
+barplot(height = Totals.Damage$Damage[1:5]/10^9,
+        names.arg = Totals.Damage$EVTYPE[1:5],
+        main = "Top 5 Storm Sources of Economic Damage",
+        xlab = "Source of Economic Damage",
+        ylab = "Damage in Billions of Dollars")
+
+```
+
+We can see that flooding and hurricanes/typhoons were the only 2 event types that caused more economic impact than tornados over the period in question.  Flooding caused \$`r Totals.Damage[1,2]/10^9` billion in damages, hurricanes\/typhoons caused \$`r Totals.Damage[2,2]/10^9` billion in damages, and tornados caused \$`r Totals.Damage[3,2]/10^9` billion in damages.
+
+
+
+
+
+
+
+
+
+
+
+
