@@ -9,11 +9,9 @@ You may be getting the following error (or a variant thereof):
 
 1.  Make sure you have an [RPubs](http://rpubs.com/) account.
 
-1.  Check your RProfile.site file.  You need to have one in the working directory.  As a minimum, the file should have this in it:
+1.  Check your RProfile.site file.  You need to have one in the working directory.  Close RStudio and make sure that, as a minimum, the file has these  lines in it:
 > options(rpubs.upload.method = "internal")  
-> options(RCurlOptions = list(verbose = FALSE, capath = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ssl.verifypeer = FALSE))
-
-Make sure that you close RStudio and reopen after you've editted the file.
+options(RCurlOptions = list(verbose = FALSE, capath = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ssl.verifypeer = FALSE))  
 
 3.  Finally, RPubs seems to not like file names with spaces or underscores.  So if you wanted to call your RPub RR_Project_02 or something similar, why not go with RRProject02 instead.
 
