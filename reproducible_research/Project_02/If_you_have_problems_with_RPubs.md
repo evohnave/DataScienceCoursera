@@ -13,6 +13,8 @@ You may be getting the following error (or a variant thereof):
 > options(rpubs.upload.method = "internal")  
 options(RCurlOptions = list(verbose = FALSE, capath = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ssl.verifypeer = FALSE))  
 
+1. Make sure that the packages knitr, RCurl, and bitops have been enabled via a `library()` call or by selecting them in the Packages window in RStudio.
+
 3.  Finally, RPubs seems to not like file names with spaces or underscores.  So if you wanted to call your RPub RR_Project_02 or something similar, why not go with RRProject02 instead.
 
 That's all the things that I found to be troublesome, and generally all the problems seem to be fixed with the above steps.  With the above you ought to be able to publish to RPubs.
