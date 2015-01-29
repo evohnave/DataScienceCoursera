@@ -9,7 +9,7 @@ You may be getting the following error (or a variant thereof):
 
 1.  Make sure you have an [RPubs](http://rpubs.com/) account.
 
-1.  Check your RProfile.site file.  You need to have one in the working directory.  Close RStudio and make sure that, as a minimum, the file has these  lines in it:
+1.  Check your RProfile.site file.  You might need to have one in the working directory, it might need to be in the directory with your RStudio executable.  Close RStudio and make sure that, as a minimum, the file has these  lines in it:
 > options(rpubs.upload.method = "internal")  
 options(RCurlOptions = list(verbose = FALSE, capath = system.file("CurlSSL", "cacert.pem", package = "RCurl"), ssl.verifypeer = FALSE))  
 
