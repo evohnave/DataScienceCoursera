@@ -18,3 +18,11 @@
 * [Learning From Data](http://www.amazon.com/Learning-Data-Yaser-S-Abu-Mostafa/dp/1600490069/), by Yaser S. Abu-Mostafa
 
 ![Image](http://ecx.images-amazon.com/images/I/41%2B9AHJZt2L._AA160_.jpg)
+
+* [The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition](http://www.amazon.com/Elements-Statistical-Learning-Prediction-Statistics/dp/0387848576/), by Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+
+![Image](http://ecx.images-amazon.com/images/I/41LeU3HcBdL._AA160_.jpg) There is also a [pdf](http://web.stanford.edu/~hastie/local.ftp/Springer/OLD/ESLII_print4.pdf) version of the book online for free.  You can even take a course from the authors at Standford.
+
+* [An Introduction to Statistical Learning: with Applications in R](http://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370/) by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani.
+
+![Image](http://ecx.images-amazon.com/images/I/41PwrSEJZ9L._AA160_.jpg) Again, there's a [pdf](http://www-bcf.usc.edu/~gareth/ISL/ISLR%20Fourth%20Printing.pdf) version of the book...
