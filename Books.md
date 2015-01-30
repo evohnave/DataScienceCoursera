@@ -1,8 +1,5 @@
 # Books
 
-'._AA160_
-
-
 | Book Name / Link / Comment | Picture |
 |--------------------------------------------|:-------------------------------------------------------------------:|
 | [R Machine Learning Essentials](http://www.amazon.com/Machine-Learning-Essentials-Michele-Usuelli/dp/178398774X), by Michele Usuelli  | ![Image](http://ecx.images-amazon.com/images/I/51er3ZCx%2BLL.jpg) |
