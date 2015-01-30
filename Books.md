@@ -13,7 +13,7 @@
 
 * [Machine Learning: A Probabilistic Perspective](http://www.amazon.com/Machine-Learning-Probabilistic-Perspective-Computation/dp/0262018020/), by Kevin P. Murphy
 
-![Image](http://ecx.images-amazon.com/images/I/41IsY16f9PL._AA160_.jpg)
+![Image](http://ecx.images-amazon.com/images/I/41IsY16f9PL._AA160_.jpg) Highly recommended, get at least 4th printing to avoid the typos.
 
 * [Learning From Data](http://www.amazon.com/Learning-Data-Yaser-S-Abu-Mostafa/dp/1600490069/), by Yaser S. Abu-Mostafa
 
